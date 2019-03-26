@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenIOC xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="4b93668f-8fd1-455e-b153-17065d4a9f36" last-modified="2019-03-26T06:08:37Z" published-date="0001-01-01T00:00:00" xmlns="http://openioc.org/schemas/OpenIOC_1.1">
+  <metadata>
+    <short_description>Operation Shadowserver</short_description>
+    <description>This openIOC file is meant to hunt / search for known indicators of OperationShadowhammer mentioned in: https://securelist.com/operation-shadowhammer/89992/
+It checks for the known bad download liveupdate, the hash (only in event buffer) and domains / IPs known as C2</description>
+    <keywords />
+    <authored_by>Alexander Jaeger</authored_by>
+    <authored_date>2019-03-26T05:46:49</authored_date>
+    <links />
+  </metadata>
+  <criteria>
+    <Indicator operator="OR" id="5ed39d14-159e-4c54-a1ef-f492f8da8aa3">
+      <Indicator operator="OR" id="a3819d96-1a93-472f-b673-535caaec83a9">
+        <IndicatorItem id="fbabc2b9-5caa-410b-b26c-f2bdb098a3a3" condition="contains" preserve-case="false" negate="false">
+          <Context document="UrlHistoryItem" search="UrlHistoryItem/URL" type="mir" />
+          <Content type="string">http://liveupdate01.asus.com/pub/ASUS/nb/Apps_for_Win8/LiveUpdate/Liveupdate_Test_VER365.zip</Content>
+        </IndicatorItem>
+        <IndicatorItem id="3c735ab7-46c3-49be-bd6f-b1199c2f5bf4" condition="contains" preserve-case="false" negate="false">
+          <Context document="UrlHistoryItem" search="UrlHistoryItem/URL" type="mir" />
+          <Content type="string">https://liveupdate01s.asus.com/pub/ASUS/nb/Apps_for_Win8/LiveUpdate/Liveupdate_Test_VER362.zip</Content>
+        </IndicatorItem>
+        <IndicatorItem id="5811b582-6005-4c7e-b908-3aaaa81bc1b8" condition="contains" preserve-case="false" negate="false">
+          <Context document="UrlHistoryItem" search="UrlHistoryItem/URL" type="mir" />
+          <Content type="string">https://liveupdate01s.asus.com/pub/ASUS/nb/Apps_for_Win8/LiveUpdate/Liveupdate_Test_VER360.zip</Content>
+        </IndicatorItem>
+        <IndicatorItem id="d7152fda-d220-4f00-9bf0-429cf2581db4" condition="contains" preserve-case="false" negate="false">
+          <Context document="UrlHistoryItem" search="UrlHistoryItem/URL" type="mir" />
+          <Content type="string">https://liveupdate01s.asus.com/pub/ASUS/nb/Apps_for_Win8/LiveUpdate/Liveupdate_Test_VER359.zip</Content>
+        </IndicatorItem>
+      </Indicator>
+      <Indicator operator="OR" id="1d227780-143f-4770-9246-9406da5a6bc0">
+        <IndicatorItem id="b843b230-9dc3-40b4-85b9-2b3c9c7e2488" condition="is" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/fileWriteEvent/md5" type="endpoint" />
+          <Content type="md5">aa15eb28292321b586c27d8401703494</Content>
+        </IndicatorItem>
+      </Indicator>
+      <Indicator operator="OR" id="80a581a1-db8d-4291-8aef-877a87baf992">
+        <IndicatorItem id="af59e291-96a2-4193-823a-9e0dce0dd879" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/ipv4NetworkEvent/remoteIP" type="endpoint" />
+          <Content type="IP">141.105.71.116</Content>
+        </IndicatorItem>
+      </Indicator>
+      <Indicator operator="OR" id="f1883f9a-ac87-4241-9c93-13abd4963fad">
+        <IndicatorItem id="4bfc45f1-390a-4d5a-bd96-a2a335c8af0c" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/urlMonitorEvent/requestUrl" type="endpoint" />
+          <Content type="string">http://liveupdate01.asus.com/pub/ASUS/nb/Apps_for_Win8/LiveUpdate/Liveupdate_Test_VER365.zip</Content>
+        </IndicatorItem>
+        <IndicatorItem id="50e18005-be4e-4b54-b08a-7e900169f392" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/urlMonitorEvent/requestUrl" type="endpoint" />
+          <Content type="string">https://liveupdate01s.asus.com/pub/ASUS/nb/Apps_for_Win8/LiveUpdate/Liveupdate_Test_VER362.zip</Content>
+        </IndicatorItem>
+        <IndicatorItem id="5437be8f-3933-4bcb-b8d4-70796643dafa" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/urlMonitorEvent/requestUrl" type="endpoint" />
+          <Content type="string">https://liveupdate01s.asus.com/pub/ASUS/nb/Apps_for_Win8/LiveUpdate/Liveupdate_Test_VER360.zip</Content>
+        </IndicatorItem>
+        <IndicatorItem id="4e0eb0f5-dde7-40e0-ba99-98b2c18a02f5" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/urlMonitorEvent/requestUrl" type="endpoint" />
+          <Content type="string">https://liveupdate01s.asus.com/pub/ASUS/nb/Apps_for_Win8/LiveUpdate/Liveupdate_Test_VER359.zip</Content>
+        </IndicatorItem>
+      </Indicator>
+      <Indicator operator="OR" id="b7f57d23-00db-409c-9935-82ed859a8a0a">
+        <IndicatorItem id="cd684e9b-9ea5-4073-b6b5-52a98e76cc1a" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/urlMonitorEvent/requestUrl" type="endpoint" />
+          <Content type="string">asushotfix.com</Content>
+        </IndicatorItem>
+        <IndicatorItem id="8b8765c4-ec5e-4dd9-8d0a-7bce767a9520" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/urlMonitorEvent/requestUrl" type="endpoint" />
+          <Content type="string">simplexoj.com</Content>
+        </IndicatorItem>
+        <IndicatorItem id="6d1b89e1-0ffb-45d7-bc08-22a1e2b12509" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/urlMonitorEvent/requestUrl" type="endpoint" />
+          <Content type="string">homeabcd.com</Content>
+        </IndicatorItem>
+      </Indicator>
+      <Indicator operator="OR" id="91803b6b-91e4-4b23-9e85-6f09b41f1d94">
+        <IndicatorItem id="84d773e1-940f-4b32-9769-08b738045fe5" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/dnsLookupEvent/hostname" type="endpoint" />
+          <Content type="string">asushotfix.com</Content>
+        </IndicatorItem>
+        <IndicatorItem id="83819b50-6dbd-463f-af1e-7aa4256e025f" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/dnsLookupEvent/hostname" type="endpoint" />
+          <Content type="string">homeabcd.com</Content>
+        </IndicatorItem>
+        <IndicatorItem id="e17620c8-1dc0-4c4c-b4e7-b617fcd52615" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/dnsLookupEvent/hostname" type="endpoint" />
+          <Content type="string">simplexoj.com</Content>
+        </IndicatorItem>
+      </Indicator>
+    </Indicator>
+  </criteria>
+  <parameters />
+</OpenIOC>
