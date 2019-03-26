@@ -1,0 +1,122 @@
+{
+    "37fc20cf-cfd9-4aae-b67a-277a8cb927c7": {
+        "execution": [
+            [
+                {
+                    "operator": "contains",
+                    "token": "urlMonitorEvent/requestUrl",
+                    "type": "text",
+                    "value": "http://liveupdate01.asus.com/pub/asus/nb/apps_for_win8/liveupdate/liveupdate_test_ver365.zip"
+                },
+                {
+                    "operator": "contains",
+                    "token": "urlMonitorEvent/requestUrl",
+                    "type": "text",
+                    "value": "https://liveupdate01s.asus.com/pub/asus/nb/apps_for_win8/liveupdate/liveupdate_test_ver362.zip"
+                },
+                {
+                    "operator": "contains",
+                    "token": "urlMonitorEvent/requestUrl",
+                    "type": "text",
+                    "value": "https://liveupdate01s.asus.com/pub/asus/nb/apps_for_win8/liveupdate/liveupdate_test_ver360.zip"
+                },
+                {
+                    "operator": "contains",
+                    "token": "urlMonitorEvent/requestUrl",
+                    "type": "text",
+                    "value": "https://liveupdate01s.asus.com/pub/asus/nb/apps_for_win8/liveupdate/liveupdate_test_ver359.zip"
+                }
+            ],
+            [
+                {
+                    "operator": "contains",
+                    "token": "ipv4NetworkEvent/remoteIP",
+                    "type": "text",
+                    "value": "141.105.71.116"
+                }
+            ],
+            [
+                {
+                    "operator": "contains",
+                    "token": "dnsLookupEvent/hostname",
+                    "type": "text",
+                    "value": "asushotfix.com"
+                },
+                {
+                    "operator": "contains",
+                    "token": "dnsLookupEvent/hostname",
+                    "type": "text",
+                    "value": "simplexoj.com"
+                },
+                {
+                    "operator": "contains",
+                    "token": "dnsLookupEvent/hostname",
+                    "type": "text",
+                    "value": "homeabcd.com"
+                }
+            ]
+        ],
+        "presence": [
+            [
+                {
+                    "operator": "contains",
+                    "token": "urlMonitorEvent/requestUrl",
+                    "type": "text",
+                    "value": "http://liveupdate01.asus.com/pub/asus/nb/apps_for_win8/liveupdate/liveupdate_test_ver365.zip"
+                },
+                {
+                    "operator": "contains",
+                    "token": "urlMonitorEvent/requestUrl",
+                    "type": "text",
+                    "value": "https://liveupdate01s.asus.com/pub/asus/nb/apps_for_win8/liveupdate/liveupdate_test_ver362.zip"
+                },
+                {
+                    "operator": "contains",
+                    "token": "urlMonitorEvent/requestUrl",
+                    "type": "text",
+                    "value": "https://liveupdate01s.asus.com/pub/asus/nb/apps_for_win8/liveupdate/liveupdate_test_ver360.zip"
+                },
+                {
+                    "operator": "contains",
+                    "token": "urlMonitorEvent/requestUrl",
+                    "type": "text",
+                    "value": "https://liveupdate01s.asus.com/pub/asus/nb/apps_for_win8/liveupdate/liveupdate_test_ver359.zip"
+                }
+            ],
+            [
+                {
+                    "operator": "contains",
+                    "token": "ipv4NetworkEvent/remoteIP",
+                    "type": "text",
+                    "value": "141.105.71.116"
+                }
+            ],
+            [
+                {
+                    "operator": "contains",
+                    "token": "dnsLookupEvent/hostname",
+                    "type": "text",
+                    "value": "asushotfix.com"
+                },
+                {
+                    "operator": "contains",
+                    "token": "dnsLookupEvent/hostname",
+                    "type": "text",
+                    "value": "simplexoj.com"
+                },
+                {
+                    "operator": "contains",
+                    "token": "dnsLookupEvent/hostname",
+                    "type": "text",
+                    "value": "homeabcd.com"
+                }
+            ]
+        ],
+        "name": "Shadowhammer",
+        "description":"Alexander Jaeger This openIOC file is meant to hunt / search for known indicators of OperationShadowhammer mentioned in: https://securelist.com/operation-shadowhammer/89992/It checks for the known bad download liveupdate, the hash (only in event buffer) and domains / IPs known as C2",
+        "category": "Custom",
+        "platforms": [
+            "win"
+        ]
+    }
+}
