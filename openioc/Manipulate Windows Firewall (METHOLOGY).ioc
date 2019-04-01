@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenIOC xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2a487ff2-d8d0-4a37-9b4b-b4871ac6a2e3" last-modified="2019-04-01T08:03:55Z" published-date="0001-01-01T00:00:00" xmlns="http://openioc.org/schemas/OpenIOC_1.1">
+  <metadata>
+    <short_description>Manipulate Windows Firewall (METHOLOGY) T1089</short_description>
+    <description>ATT&amp;CK T1089
+
+This indicator matches various attempts to manipulate / deactivate the windows firewall.
+
+https://www.tenforums.com/tutorials/70699-turn-off-windows-defender-firewall-windows-10-a.html</description>
+    <authored_by>Alexander Jaeger alexanderjaeger.de</authored_by>
+    <authored_date>2019-04-01T06:53:57Z</authored_date>
+    <links />
+  </metadata>
+  <criteria>
+    <Indicator operator="OR" id="8e0d5fda-1ae6-43fc-af38-40c6ef04589e">
+      <Indicator operator="OR" id="758c96e7-8c83-4d71-aa9d-40f0b7bfed8a">
+        <IndicatorItem id="b03648fa-db78-4c04-8e61-a54dd17f321c" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string">advfirewall set allprofiles state off</Content>
+        </IndicatorItem>
+        <IndicatorItem id="4526d5dd-f3c4-492a-80a1-51b2614d4ba3" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string">advfirewall set currentprofile state off</Content>
+        </IndicatorItem>
+        <IndicatorItem id="524f549e-49c9-40c8-ae00-eaff71622fbd" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string">advfirewall set domainprofile state off</Content>
+        </IndicatorItem>
+        <IndicatorItem id="6d3e55da-6aa3-4de2-81b0-9c7a5c32427a" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string">advfirewall set privateprofile state off</Content>
+        </IndicatorItem>
+        <IndicatorItem id="94e3a796-ea4b-40b0-9fa8-f774a2598bb4" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string">advfirewall set publicprofile state off</Content>
+        </IndicatorItem>
+      </Indicator>
+      <Indicator operator="OR" id="76428f7a-ac9b-4606-8408-98b88a82a2c4">
+        <IndicatorItem id="63136c71-5cf5-4637-99e7-4daff2f77c79" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string">Set-NetFirewallProfile -Enabled False</Content>
+        </IndicatorItem>
+        <IndicatorItem id="4e93635a-546c-480f-a324-616bba8d34d2" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string">Set-NetFirewallProfile -Profile Domain -Enabled False</Content>
+        </IndicatorItem>
+        <IndicatorItem id="40b08fc2-76a5-4c8f-8556-48106cbfb010" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string"> Set-NetFirewallProfile -Profile Private -Enabled False</Content>
+        </IndicatorItem>
+        <IndicatorItem id="ad9a15bb-364a-4a81-99f7-24fb2a48b2c8" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string">Set-NetFirewallProfile -Profile Public -Enabled False</Content>
+        </IndicatorItem>
+      </Indicator>
+      <Indicator operator="OR" id="cae60c5b-f779-4f79-8ef8-30f32a227305">
+        <Indicator operator="AND" id="af9f1db7-7b87-40c6-a22a-85acca0dd02e">
+          <IndicatorItem id="41ecb72e-e8df-41bd-806e-adad5d10dcc7" condition="contains" preserve-case="false" negate="false">
+            <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+            <Content type="string">Set-NetFirewallProfile -Profile</Content>
+          </IndicatorItem>
+          <IndicatorItem id="48695f95-ba3f-43f4-bf14-ca9e0bad82ca" condition="contains" preserve-case="false" negate="false">
+            <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+            <Content type="string">-Enabled False</Content>
+          </IndicatorItem>
+        </Indicator>
+      </Indicator>
+      <Indicator operator="OR" id="f9fa22c4-1613-4853-9b5e-45ae9f6029d7">
+        <IndicatorItem id="65b41dc3-6bf7-42cc-9cf0-68390dfc8ef6" condition="contains" preserve-case="false" negate="false">
+          <Context document="eventItem" search="eventItem/processEvent/processCmdLine" type="endpoint" />
+          <Content type="string">netsh advfirewall set allprofiles state off</Content>
+        </IndicatorItem>
+      </Indicator>
+    </Indicator>
+  </criteria>
+  <parameters />
+</OpenIOC>
